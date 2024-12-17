@@ -14,7 +14,7 @@ from .function import s_remove, rand_string_generator
 
 # Create your models here.
 
-class conpany(models.Model):
+class company(models.Model):
 
     name = models.CharField('company name', null=False, blank=False, max_length=200)
     logo = models.ImageField('company logo', null=False)
@@ -56,6 +56,17 @@ class product(models.Model):
             pass
         return super(product, self).save(*args, **kwargs)
     
+class  spot(models.Model):
+    
+    name = models.CharField('spots name that will be purchased', null=False, blank=False, max_length=2000)
+    price = models.IntegerField('spot priceing', default=0)
+    
+class exchange(models.Model):
+    
+    currency = models.CharField('surrency name thta are avalible for exchnage', null=False, blank=False, max_length=200)
+    ex_price = models.IntegerField('price in usd exchnage', default=0)
+    limits = models.CharField('exchange limits', null=True, blank=True, default='No limits', max_length=300)
+    time_speep  = models.CharField('specify how long it will take to exchnage the coins', null=True, blank=True, max_length=100)
     
 
  
