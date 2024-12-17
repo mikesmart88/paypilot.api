@@ -20,9 +20,131 @@
 <meta name="twitter:image" content="https://{% static 'paypilotapp/images/favicon/favicon-32x32.png' %}" />
 <meta property="twiter:card" content="summary_large_image" />
 <meta name="twitter:image:alt" content="PayPilot logo" />
-
+<link rel="stylesheet" href="{% static 'paypilotapp/styles/prod.css' %}">
 {% endblock %}
 
 {% block content %} 
+
+{% if request.user.is_authenticated %}
+<section>
+    <h2>
+        no product yet
+    </h2>
+</section>
+{% else %}
+<section class="not_log_sect" style="background-image: url(/static/paypilotapp/images/curves.jpeg);">
+<h2>
+    Simple, helpfull products you can use for your payments..
+</h2>
+<p>
+    Get payment marchine to make fast secured transacions across the globe.
+</p>
+<a href="">
+    <button>
+        Get Started
+    </button>
+</a>
+</section>
+{% endif %}
+
+<section class="not_log_sect2">
+    <aside class="product_header">
+        <strong>
+            Choose the products you need
+        </strong>
+        <p>
+            Our sales team can help you get the best product to help whit your payment
+        </p>
+        <a href="">Get help from our sales team &RightArrow;</a>
+    </aside>
+    <br>
+    <aside class="all_products">
+        {% if products %}
+        {% for item in products %}
+        
+        <aside class="single_product">
+            <div>
+                <h2>
+                    {{item.pro_name}}
+                </h2>
+                <p>starting at</p>
+                <span>
+                    <h2>
+                        {{item.price}}<em>/month</em>
+                    </h2>
+                </span>
+                <p>
+                    {{item.shot_des}}
+                </p>
+            </div>
+            <p>
+                {{item.features1}}
+            </p>
+            <p>
+                {{item.features2}}
+            </p>
+            <p>
+                {{item.features3}}
+            </p>
+            <br>
+            <br>
+            <br>
+            <a href="" style=" color:#000">
+                View Pricings &rightarrow;
+            </a>
+        </aside>
+        {% endfor %}
+        {% endif %}
+    </aside>
+<br>
+    <br>
+    <aside class="build_management">
+        <h2>
+            Product benefits
+        </h2>
+        <ul>
+            <li>
+                Private VSS Egress Overage Data Transfer between data.
+            </li>
+            <br>
+            <li>
+                Make online shoping and payment whit your product anywhere.
+            </li>
+            <br>
+           <li>
+            Public VSS Egress Overage Data transfer 
+           </li>
+        </ul>
+         </aside>
+         <br>
+         <aside class="ending">
+            <div class="helps" style="background-image: url(/static/paypilotapp/images/faq.jpeg);">
+                <h2>
+                    Still have questions?
+                </h2>
+                <p>
+                    Have a complex setup or additional questions around products? Contact our sales team to get more information on Paypilot products.
+                </p>
+                <a href="">
+                    <button>
+                        Contact Us
+                    </button>
+                </a>
+            </div>
+            <div class="helps" style="background-image: url(/static/paypilotapp/images/more.jpeg);">
+                <h2>
+                    Looking for somthing more?
+                </h2>
+                <p>
+                    Intrested in something more, looking for a more development.
+                </p>
+                <a href="">
+                    <button>
+                        Contact Us
+                    </button>
+                </a>
+            </div> 
+         </aside>
+    </section>
 
 {% endblock %}
